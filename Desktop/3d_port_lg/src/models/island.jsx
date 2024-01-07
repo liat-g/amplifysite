@@ -13,7 +13,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import islandScene from '../assets/3d/cloud_ring.glb';
 import { a } from '@react-spring/three';
 
-const Island = ({isRotating, setIsRotating, ...props}) => {
+const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
     //there has to be a function for clicking, holding AND draggin
 const {gl,viewport  } = useThree();
   const islandRef = useRef();
@@ -47,10 +47,21 @@ const {gl,viewport  } = useThree();
 
             //is it a touch event (on a phone) or a mouse event (on a computer)
     //Returns the X coordinate of the touch point relative to the left edge of the browser viewport, not including any scroll offset. -- mdn
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX; // is the curr/last touch on the x axis
-    // console.log(clientX, 'clientX');
-    // console.log(viewport.width, 'viewport width')
-    // console.log(lastX, 'lastX');
+   
+      }
+
+      const handlePointerMove = (e) => {
+        //event event.stopPropagation keeps the event from bubbling any further to the DOM, halting event propagation to the refresh and then this point
+            e.stopPropagation(); //mouse click won't touch other elements
+            e.preventDefault(); //won't reload the page
+
+            //what happens if we are rotating
+
+            if (isRotating){
+              const clientX = e.touches ? e.touches[0].clientX : e.clientX; // is the curr/last touch on the x axis
+          // console.log(clientX, 'clientX');
+          // console.log(viewport.width, 'viewport width')
+           // console.log(lastX, 'lastX');
     console.log(islandRef, 'islandRef')
 
     const delta = (clientX - lastX.current) / viewport.width; //difference between the first touch and ending touch
@@ -64,17 +75,6 @@ const {gl,viewport  } = useThree();
     // console.log(rotationSpeed, 'rotationSpeed');
 
     
-      }
-
-      const handlePointerMove = (e) => {
-        //event event.stopPropagation keeps the event from bubbling any further to the DOM, halting event propagation to the refresh and then this point
-            e.stopPropagation(); //mouse click won't touch other elements
-            e.preventDefault(); //won't reload the page
-
-            //what happens if we are rotating
-
-            if (isRotating){
-              handlePointerUp(e);
             }
         
           }
@@ -106,6 +106,8 @@ const {gl,viewport  } = useThree();
             if (Math.abs(rotationSpeed.current) < 0.001){
               rotationSpeed.current = 0 
             }
+
+            islandRef.current.rotation.y += rotationSpeed.current; //smooths out the rotation
           } else {
             const rotation = islandRef.current.rotation.y;
  /**

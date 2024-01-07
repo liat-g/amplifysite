@@ -6,24 +6,24 @@ import Island from '../models/island';
 import Sky from '../models/Sky';
 import Bird from '../models/Bird';
 import Balloons from '../models/Balloons';
+import HomeInfo from '../Components/HomeInfo';
 
-      {/* <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-        POPUP
-        </div>  */}
 
 const Home = () => {
+
   const [isRotating, setIsRotating] = useState(false);
+  const [currentStage, setCurrentStage] = useState(1);
   const adjustIslandForScreenSize= () => {
     let screenScale = null 
     let rotation = [0.1, 4.7, 0];
      let screenPosition =  [0, -6.5, -43];
 
     if (window.innerWidth < 768){
-      screenScale = [2, 2, 2]
+      screenScale = [3, 3, 3]
 
     } else 
     {
-      screenScale = [4.5,4.5,4.5]
+      screenScale = [6,6,6]
  
     }
     return [screenScale, screenPosition, rotation]
@@ -33,17 +33,19 @@ const Home = () => {
 
   const adjustBalloonsForScreenSize= () => {
     let screenScale, screenPosition;
+   
 
     if (window.innerWidth < 768){
-      screenScale = [.05, .05, .05]
+      screenScale = [.005, .005, .005]
       screenPosition=[0, -1.5, 0];
 
     } else 
     {
-      screenScale = [.01, .01, .01];
+      screenScale = [.001, .001, .001];
       screenPosition=[0, -4, -4];
  
     }
+    console.log(screenScale)
     return [screenScale, screenPosition]
   }
 
@@ -52,7 +54,9 @@ const [balloonsScale, balloonsPosition] = adjustBalloonsForScreenSize(); //passi
   return (
     <section className="w-full h-screen relative">
 
-
+       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && <HomeInfo currentStage={currentStage}/>}
+        </div>  
         <Canvas
          className ={`w-full h-screen relative ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near: 0.1, far: 1000}}
@@ -64,13 +68,14 @@ const [balloonsScale, balloonsPosition] = adjustBalloonsForScreenSize(); //passi
             <spotLight /> */}
             <hemisphereLight skyColor="#b1e1ff" groundColor="#b1e1ff" intensity={1}/>
             <Bird />
-            <Sky />
+            <Sky isRotating={isRotating}/>
             <Island 
             position={islandPosition} //these are our props from the function above 
             scale={islandScale}
             rotation={islandRotation}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
             />
             <Balloons 
                         isRotating={isRotating}
