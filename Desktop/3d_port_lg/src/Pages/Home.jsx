@@ -62,8 +62,8 @@ const [balloonsScale, balloonsPosition] = adjustBalloonsForScreenSize(); //passi
         camera={{ near: 0.1, far: 1000}}
         >
           <Suspense fallback={<Loader />}>
-            <directionalLight position={[10,10,10]} intensity={8}/> 
-            <ambientLight intesity={0.5}/>
+            <directionalLight position={[5,7,10]} intensity={6}/> 
+            <ambientLight intesity={.25}/>
             {/* <pointLight />
             <spotLight /> */}
             <hemisphereLight skyColor="#b1e1ff" groundColor="#b1e1ff" intensity={1}/>
