@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Projects from './Components/Projects';
 import Contact from './Components/Contact';
+import Designs from './Components/Designs';
 import './App.css'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Navbar />
         <Projects />
+        <Designs />
         <Contact />
 
       </Router>
