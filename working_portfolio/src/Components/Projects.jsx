@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import TRGROSSwireframe from '../assets/TRGROSSwireframe.png'
+import gscript from '../assets/gscript.png'
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 // import Fade from '@mui/material/Fade';
 
@@ -31,7 +32,7 @@ const ProjectsArray = [{
     Name: "TR Gross Design", 
     Type: "Wireframes and Prototypes",
     Description: "T.R. Gross and I met on January 4, 2024, to discuss a plan on how to structure his portfolio website. T.R. Gross wants to sell his services as a craftsman and eventually scale up to an ecommerce website once he develops his inventory. Upon speaking to Gross, his demographics for the time being are potential employers, whether that be freelance or full time. For a portfolio website focused on selling his services, we need to have a homepage that is accessible on mobile with Gross’ best work, picture heavy. We need a gallery page that breaks down the planning process, and has writing about each of the pieces, and organizes his different crafts into categories. We also need a contact me page that has a built in emailing service that will go straight to TR’s email ",
-    Role:"Designer",
+    Role:"Freelance Designer",
     img: TRGROSSwireframe,
     techStack: "Figma",
     Link: "https://www.figma.com/file/wDyogo3lBZ0sas1nwQWmIG/Trevor-R-Gross?type=design&node-id=1669%3A162202&mode=design&t=R47lxgfIxxFWwLHR-1"
@@ -39,11 +40,11 @@ const ProjectsArray = [{
 {
     Name: "Time Tracker", 
     Type: "Google Scripts algorithm for 1099 Contractors",
-    Description: "",
-    Role:"",
-    img: "",
-    techStack: "JS, Google Scripts",
-    Link: ""
+    Description: "Tool for contractors who can't make their own spreadsheets",
+    Role: "developer",
+    img: gscript,
+    techStack: "JS, GWS, CLASP",
+    Link: "https://docs.google.com/spreadsheets/d/1zzOoxFPydGHzt16gcRxGBDouw3hUMrT_zRQBIk27Ci4/edit?usp=sharing"
 },
 {
     Name: "Dream Journal", 
@@ -52,16 +53,16 @@ const ProjectsArray = [{
     Role:"fullstack developer",
     img: "",
     techStack: "Python, Django",
-    Link: ""
+    Link: "https://github.com/liat-g/Dream-Journal"
 },
 {
     Name: "3D Portfolio", 
     Type: "Interactive 3d Portfolio",
-    Description: "",
-    Role:"",
+    Description: "site to experiment with 3d react technologies",
+    Role:"Developer",
     img: "",
-    techStack: "",
-    Link: ""
+    techStack: "Three JS, React Three Fiber, React JS, Vue",
+    Link: "https://github.com/liat-g/3d_port_lg"
 },
 ]
 
@@ -130,7 +131,7 @@ const Projects = () => {
       </Box>
       <Box>
           <a href={data.Link}>
-              See the Github Repo Here!
+              See the Repo Here!
           </a>
       </Box>
         {/* </ Card> */}
