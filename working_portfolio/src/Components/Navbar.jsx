@@ -7,9 +7,9 @@ const Navbar = () => {
     <h1>
     Liat Arkadia Guvenc
     </h1>
-    <subtitle>
+    <p>
         fullstack web developer from NY
-    </subtitle>
+    </p>
     </div>
     /* </main> */
   )
