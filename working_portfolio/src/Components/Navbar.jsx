@@ -1,8 +1,9 @@
 import React from 'react'
+import Grid from '@mui/material/Grid'; // Grid version 1
 
 const Navbar = () => {
   return (
-    // <main>
+    <Grid>
         <div>
     <h1>
     Liat Arkadia Guvenc
@@ -11,7 +12,7 @@ const Navbar = () => {
         fullstack web developer from NY
     </p>
     </div>
-    /* </main> */
+    </Grid>
   )
 }
 

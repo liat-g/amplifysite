@@ -18,8 +18,25 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import postingChair from '../assets/postingChair.gif';
 import bizarrlogo from '../assets/bizarrlogo.jpeg';
+import { styled } from "@mui/material/styles";
+
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 // import Fade from '@mui/material/Fade';
+
+
+// const Wrapper = styled(Box)(({ theme }) => ({
+//   // background: "#1976d2",
+//   height: "100vh",
+//   [theme.breakpoints.down("md")]: {
+//     background: "orange",
+//   },
+//   [theme.breakpoints.down("sm")]: {
+//     background: "blue",
+//   },
+//   [theme.breakpoints.up("lg")]: {
+//     background: "purple",
+//   },
+// }));
 
 const ProjectsArray = [{
     Name: "Bizaar", 
@@ -72,11 +89,14 @@ const Projects = () => {
 
   return (
     <Grid container spacing={1}>
+    <Grid item xs={12} sm={6} md={3} lg={1} xl={1}>
          <h1> Projects </h1>
-    <Grid>
+    </Grid>
+    {/* <Grid> */}
     { ProjectsArray.map((data, index) => {
     return <Accordion
       key={index}
+      
     // expanded={expanded}
     // onChange={handleExpansion}
     // // slots={{ transition: Fade }}
@@ -90,6 +110,7 @@ const Projects = () => {
         expandIcon={<ArrowDownwardIcon />}
         aria-controls="panel1-content"
         id={`panel${index + 1}-header`}
+        
       >
         <Box
          sx={{
@@ -100,9 +121,20 @@ const Projects = () => {
             gridTemplateAreas: `"header header header header"
           "main main .                   sidebar"
           "footer footer footer footer"`,
+          // boxShadow: 1 
+          }}
+          md={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 1,
+            gridTemplateRows: 'auto',
+            gridTemplateAreas: `"header header header header"
+          "main main .                   sidebar"
+          "footer footer footer footer"`,
+          // boxShadow: 1 
           }}
         >
-        <Box sx={{ gridArea: 'header', fontStyle: 'bold', textAlign: 'left', fontSize: 'h6.fontSize'}}>
+        <Box sx={{ gridArea: 'header', fontStyle: 'bold', textAlign: 'left', fontSize: 'h6.fontSize', flexGrow: 1 }}>
         {data.Name}
         </Box>
         <Box sx={{ gridArea: 'main', fontStyle: 'italic', textAlign: 'left'}}>
@@ -111,11 +143,13 @@ const Projects = () => {
         </Box>
       </AccordionSummary>
       <AccordionDetails>
+      <Box>
         <Typography>
             {data.Description}
         </Typography>
+        </Box>
         {/* <Box> */}
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList variant="masonry" cols={{lg:3, md:3, xs:1}} gap={{lg:8, md: 8, xs:1}} >
             {data.img.map((imgUrl, imgIndex) => (
               <ImageListItem key={imgIndex}>
                 <img
@@ -123,6 +157,7 @@ const Projects = () => {
                     src={`${imgUrl}?w=248&fit=crop&auto=format`}
                     // src={imgUrl}
                     alt={`Project ${index + 1} image ${imgIndex + 1}`}
+                    
                                         />
                                     </ImageListItem>
                                 ))}
@@ -154,7 +189,7 @@ const Projects = () => {
     )
 }
 </Grid>
-    </Grid>
+    // </Grid>
   )
 }
 
