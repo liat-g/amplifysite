@@ -38,7 +38,7 @@ const Designs = () => {
 
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={3}>
          <h1> Designs </h1>
     <Grid>
     { ProjectsArray.map((data) => {

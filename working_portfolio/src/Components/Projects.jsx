@@ -19,6 +19,11 @@ import ImageListItem from '@mui/material/ImageListItem';
 import postingChair from '../assets/postingChair.gif';
 import bizarrlogo from '../assets/bizarrlogo.jpeg';
 import { styled } from "@mui/material/styles";
+import AspectRatio from '@mui/joy/AspectRatio';
+
+
+
+
 
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 // import Fade from '@mui/material/Fade';
@@ -89,7 +94,7 @@ const Projects = () => {
 
   return (
     <Grid container spacing={1}>
-    <Grid item xs={12} sm={6} md={3} lg={1} xl={1}>
+    <Grid item xs={12} sm={6}>
          <h1> Projects </h1>
     </Grid>
     {/* <Grid> */}
@@ -134,7 +139,7 @@ const Projects = () => {
           // boxShadow: 1 
           }}
         >
-        <Box sx={{ gridArea: 'header', fontStyle: 'bold', textAlign: 'left', fontSize: 'h6.fontSize', flexGrow: 1 }}>
+        <Box sx={{ gridArea: 'header', fontStyle: 'bold', textAlign: 'left', fontSize: 'h6.fontSize',}}>
         {data.Name}
         </Box>
         <Box sx={{ gridArea: 'main', fontStyle: 'italic', textAlign: 'left'}}>
@@ -148,13 +153,14 @@ const Projects = () => {
             {data.Description}
         </Typography>
         </Box>
+        <AspectRatio objectFit="contain">
         {/* <Box> */}
-        <ImageList variant="masonry" cols={{lg:3, md:3, xs:1}} gap={{lg:8, md: 8, xs:1}} >
+        <ImageList variant="masonry" cols={3}>
             {data.img.map((imgUrl, imgIndex) => (
               <ImageListItem key={imgIndex}>
                 <img
-                    srcSet={`${imgUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${imgUrl}?w=248&fit=crop&auto=format`}
+                    srcSet={`${imgUrl}?w=248&fit=contain&auto=format&dpr=2`}
+                    src={`${imgUrl}?w=248&fit=contain&auto=format`}
                     // src={imgUrl}
                     alt={`Project ${index + 1} image ${imgIndex + 1}`}
                     
@@ -162,6 +168,7 @@ const Projects = () => {
                                     </ImageListItem>
                                 ))}
           </ImageList>
+          </AspectRatio>
           {/* </Box> */}
       {/* <ImageList sx={{ width: 500, height: 450 }} variant="woven" cols={3} gap={8}>
   {data.img.map((item) => (
