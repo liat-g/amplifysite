@@ -7,11 +7,11 @@ const Navbar = ({nightMode, setNightMode}) => {
 
 
   return (
-    <Grid>
+    <Grid container spacing={100}>
+    <Grid item xs={12} sm={6}>
         <div>
         <div>
       <ModeNightIcon onClick={() => setNightMode(!nightMode)}/>
-      {/* <p>Night Mode: {nightMode ? 'On' : 'Off'}</p> */}
     </div>
     <h1>
     Liat Arkadia Guvenc
@@ -20,6 +20,7 @@ const Navbar = ({nightMode, setNightMode}) => {
         fullstack web developer from NY
     </p>
     </div>
+    </Grid>
     </Grid>
   )
 }

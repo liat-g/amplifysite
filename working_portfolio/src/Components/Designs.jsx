@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import TRGROSSwireframe from '../assets/TRGROSSwireframe.png';
+import logotag from '../assets/logotag.png';
+
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 // import Fade from '@mui/material/Fade';
 
@@ -23,7 +25,18 @@ const ProjectsArray = [
     Role:"Freelance Designer",
     img: TRGROSSwireframe,
     techStack: "Figma",
+    embed: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FwDyogo3lBZ0sas1nwQWmIG%2FTrevor-R-Gross%3Ftype%3Ddesign%26node-id%3D1669%253A162202%26mode%3Ddesign%26t%3DVk44cxM7SlOyXMYr-1",
     Link: "https://www.figma.com/file/wDyogo3lBZ0sas1nwQWmIG/Trevor-R-Gross?type=design&node-id=1669%3A162202&mode=design&t=R47lxgfIxxFWwLHR-1"
+},
+{
+  Name: "Arkadia Designs", 
+  Type: "Wireframes and Prototypes",
+  Description: "Freelance and Brand Designing for Up-and-Coming jewelry designer",
+  Role:"Freelance Designer",
+  img: logotag,
+  techStack: "Figma",
+  embed: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FWijIvb2AqtF88L4OZoYmOD%2FResearch%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DVk44cxM7SlOyXMYr-1",
+  Link: "https://www.figma.com/file/WijIvb2AqtF88L4OZoYmOD/Research?type=design&node-id=0%3A1&mode=design&t=Vk44cxM7SlOyXMYr-1"
 },
 ]
 
@@ -89,7 +102,9 @@ const Designs = () => {
       /> */}
       <Box sx={{ gridArea: 'sidebar', fontStyle: 'italic', textAlign: 'center'}}>
         <img src={data.img} alt="loading" height="400" />
+        <iframe width={800} height={450} src={data.embed} allowfullscreen></iframe>
       </Box>
+      {/* <iframe width={800} height={450} src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FWijIvb2AqtF88L4OZoYmOD%2FResearch%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DVk44cxM7SlOyXMYr-1" allowfullscreen></iframe> */}
       <Box>
           <a href={data.Link}>
               See the Figma Here!

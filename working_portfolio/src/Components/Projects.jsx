@@ -20,6 +20,11 @@ import postingChair from '../assets/postingChair.gif';
 import bizarrlogo from '../assets/bizarrlogo.jpeg';
 import { styled } from "@mui/material/styles";
 import AspectRatio from '@mui/joy/AspectRatio';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import json2mq from 'json2mq';
+
+
 
 
 
@@ -90,12 +95,18 @@ const Projects = () => {
       setExpanded((prevExpanded) => !prevExpanded);
     };
   
-
+    const matches = useMediaQuery(
+      json2mq({
+        minWidth: 600,
+      }),
+    );
 
   return (
+    <Box sx={{ whiteSpace: 'nowrap' }}>
     <Grid container spacing={1}>
     <Grid item xs={12} sm={6}>
          <h1> Projects </h1>
+         <span>{`{ minWidth: 600 } matches: ${matches}`}</span>;
     </Grid>
     {/* <Grid> */}
     { ProjectsArray.map((data, index) => {
@@ -130,7 +141,7 @@ const Projects = () => {
           }}
           md={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridTemplateColumns: 'repeat(4, 1fr)',
             gap: 1,
             gridTemplateRows: 'auto',
             gridTemplateAreas: `"header header header header"
@@ -196,7 +207,7 @@ const Projects = () => {
     )
 }
 </Grid>
-    // </Grid>
+    </Box>
   )
 }
 

@@ -63,9 +63,7 @@ function App() {
       <Router>
         <Navbar nightMode={nightMode} setNightMode={setNightMode} />
         <Projects />
-        {/* <Designs /> */}
-        <Contact />
-
+        <Designs />
       </Router>
         </box>
     </>
