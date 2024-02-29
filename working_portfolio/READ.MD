@@ -106,18 +106,62 @@ const Projects = () => {
 
   return (
     <Box sx={{ whiteSpace: 'nowrap', flexWrap: 'wrap' }}>
+    <Grid container spacing={1}>
+    <Grid item xs={12} sm={6}>
+         <h1> Projects </h1>
+         <span>{`{ minWidth: 600 } matches: ${matches}`}</span>;
+    </Grid>
+    {/* <Grid> */}
     { ProjectsArray.map((data, index) => {
     return <Accordion
       key={index}
-      >
+      
+    // expanded={expanded}
+    // onChange={handleExpansion}
+    // // slots={{ transition: Fade }}
+    // slotProps={{ transition: { timeout: 400 } }}
+    // sx={{
+    //   '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+    //   '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+    // }}
+  >
       <AccordionSummary
         expandIcon={<ArrowDownwardIcon />}
         aria-controls="panel1-content"
         id={`panel${index + 1}-header`}
         
       >
-        <Box>
+        <Box
+         sx={{
+           alignContent:'flex-start',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 1,
+            gridTemplateRows: 'auto',
+            gridTemplateAreas: `"header header header header"
+          "main main .                   sidebar"
+          "footer footer footer footer"`
+          }}
+          // md={{
+          //   display: 'grid',
+          //   gridTemplateColumns: 'repeat(4, 1fr)',
+          //   gap: 1,
+          //   gridTemplateRows: 'auto',
+          //   gridTemplateAreas: `"header header header header"
+          // "main main .                   sidebar"
+          // "footer footer footer footer"`,
+          // "&:hover":{
+          //   backgroundColor: "purple"
+          // }
+          // // boxShadow: 1 
+          // }}
+        >
+        {/* <AccordionHeading>
+        {data.Name}
+        </AccordionHeading> */}
+        <Box sx={{ gridArea: 'main', fontStyle: 'italic', textAlign: 'left'}}>
         {data.Type}
+        </Box>
         </Box>
       </AccordionSummary>
       <AccordionDetails>
@@ -126,6 +170,8 @@ const Projects = () => {
             {data.Description}
         </Typography>
         </Box>
+        {/* <AspectRatio objectFit="contain"> */}
+        {/* <Box> */}
         <ImageList variant="masonry" cols={3}>
             {data.img.map((imgUrl, imgIndex) => (
               <ImageListItem key={imgIndex}>
@@ -139,6 +185,22 @@ const Projects = () => {
                                     </ImageListItem>
                                 ))}
           </ImageList>
+          {/* </AspectRatio> */}
+          {/* </Box> */}
+      {/* <ImageList sx={{ width: 500, height: 450 }} variant="woven" cols={3} gap={8}>
+  {data.img.map((item) => (
+    <ImageListItem>
+      {console.log(data.img, 'data.img')}
+      <img
+        srcSet={`${item}?w=161&fit=crop&auto=format&dpr=2 2x`}
+        src={`${item}?w=161&fit=crop&auto=format`}
+      />
+    </ImageListItem>
+  ))}
+</ImageList> */}
+      {/* <Box sx={{ gridArea: 'sidebar', fontStyle: 'italic', textAlign: 'center'}}>
+        <img src={data.img} alt="loading" height="400" />
+      </Box> */}
       <Box>
           <a href={data.Link}>
               See the Repo Here!
@@ -150,8 +212,11 @@ const Projects = () => {
     }
     )
 }
+</Grid>
     </Box>
   )
 }
 
 export default Projects
+
+//this is the original projects code before i started fuckinga round

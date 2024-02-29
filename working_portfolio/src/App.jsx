@@ -4,7 +4,6 @@ import Navbar from './Components/Navbar';
 import Projects from './Components/Projects';
 import Contact from './Components/Contact';
 import Designs from './Components/Designs';
-import './App.css'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -12,7 +11,8 @@ import '@fontsource/roboto/700.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
+import {Box, Stack} from '@mui/material';
+// import Container from '@mui/material/Container';
 // import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 // import Brightness4Icon from '@mui/icons-material/Brightness4';
 // import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -59,13 +59,15 @@ function App() {
 
   return (
     <>
-      <box>
+      <Box>
       <Router>
-        <Navbar nightMode={nightMode} setNightMode={setNightMode} />
+        <Stack direction="column" justifyContent="center">
+        <Navbar nightMode={nightMode} setNightMode={setNightMode}/>
         <Projects />
-        <Designs />
+        {/* <Designs /> */}
+        </Stack>
       </Router>
-        </box>
+      </Box>
     </>
   )
 }
