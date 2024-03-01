@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar';
 import Projects from './Components/Projects';
 import Contact from './Components/Contact';
 import Designs from './Components/Designs';
+import VerticalTabs from './Components/TabbedProjects';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -12,6 +13,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import {Box, Stack} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import json2mq from 'json2mq';
+
 // import Container from '@mui/material/Container';
 // import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 // import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -52,9 +57,14 @@ import {Box, Stack} from '@mui/material';
 //   },
 // });
 
-
 function App() {
   const [nightMode, setNightMode] = useState(false)
+  
+    const matches = useMediaQuery(
+      json2mq({
+        minWidth: 600
+      })
+    )
 
 
   return (
@@ -63,7 +73,11 @@ function App() {
       <Router>
         <Stack direction="column" justifyContent="center">
         <Navbar nightMode={nightMode} setNightMode={setNightMode}/>
-        <Projects />
+        <Box xs={{typography: 'h6.fontSize', fontWeight: '500',}}> 
+          Projects
+        { !matches ? <Projects /> : <VerticalTabs /> 
+}
+        </Box>
         {/* <Designs /> */}
         </Stack>
       </Router>

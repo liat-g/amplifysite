@@ -23,15 +23,16 @@ import AspectRatio from '@mui/joy/AspectRatio';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import json2mq from 'json2mq';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 
 
+// const AccordionHeading = styled(Typography)(({theme}) => ({
 
-
-const AccordionHeading = styled(Typography)(({theme}) => ({
-
-  backgroundColor: palette.secondary
-}))
+//   backgroundColor: palette.secondary
+// }))
 
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 // import Fade from '@mui/material/Fade';
@@ -57,7 +58,7 @@ const ProjectsArray = [{
     Description: 
     "Bizarr, a collaborative marketplace, keeps it simple, but also has everything you would need to buy and sell products in one transparent application. Our app was designed with React Native, deployed with Expo, and utilizes React Native Maps, Expo Location, and Google Places API to obtain the user’s location so that they can find products, as well as post a product to a specific location, where it can be picked up. Expo Image Picker allows users to upload images of their product, which is stored in Cloudinary. All of our listings are stored in Google’s Firebase Firestore, which we used as our database and for user authentication. We also implemented a realtime chat feature for our users to communicate amongst each other using React Native Gifted Chat.",
     Role:"Fullstack Developer",
-    img: [ bizarrImg, bizarrlogo ],
+    img: [ bizarrImg, postingChair, bizarrlogo ],
     techStack: "React Native Maps, Expo Location, Google Api, Cloudinary, Google Firestore, React Native Gifted Chat",
     Link: "https://github.com/04-cs-2109-compoutine/Bizarr"
 },
@@ -89,72 +90,68 @@ const ProjectsArray = [{
     Link: "https://docs.google.com/spreadsheets/d/1zzOoxFPydGHzt16gcRxGBDouw3hUMrT_zRQBIk27Ci4/edit?usp=sharing"
 },
 ]
-
-const Projects = () => {
-
-    const [expanded, setExpanded] = useState(false);
-
-    const handleExpansion = () => {
-      setExpanded((prevExpanded) => !prevExpanded);
-    };
-  
-    const matches = useMediaQuery(
-      json2mq({
-        minWidth: 600,
-      }),
-    );
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <Box sx={{flexWrap: 'wrap' }}>
-    { ProjectsArray.map((data, index) => {
-    return <Accordion
-      key={index}
-      >
-      <AccordionSummary
-        expandIcon={<ArrowDownwardIcon />}
-        aria-controls="panel1-content"
-        id={`panel${index + 1}-header`}
-        
-      >
-        <Box>
-        {data.Name}
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
         </Box>
-        <Typography variant="caption" p={3} sx={{fontStyle: 'italic'}}>
-        {data.Type}
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-      {/* <Box sx={{overflow: "wrap"}}> */}
-        <Typography variant="caption" sx={{ wordBreak: "break-word", display:"inline"}}>
-            {data.Description}
-        </Typography>
-        {/* </Box> */}
-        <ImageList variant="masonry" cols={1}>
-            {data.img.map((imgUrl, imgIndex) => (
-              <ImageListItem key={imgIndex}>
-                <img
-                    srcSet={`${imgUrl}?w=248&fit=contain&auto=format&dpr=2`}
-                    src={`${imgUrl}?w=248&fit=contain&auto=format`}
-                    // src={imgUrl}
-                    alt={`Project ${index + 1} image ${imgIndex + 1}`}
-                    
-                                        />
-                                    </ImageListItem>
-                                ))}
-          </ImageList>
-      <Box>
-          <a href={data.Link}>
-              See the Repo Here!
-          </a>
-      </Box>
-        {/* </ Card> */}
-      </AccordionDetails>
-    </Accordion>
-    }
-    )
-}
-    </Box>
-  )
+      )}
+    </div>
+  );
 }
 
-export default Projects
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+function VerticalTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 500 }}
+    >
+      <Tabs
+        variant="fullWidth"
+        orientation="vertical"
+        // variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        sx={{ borderRight: 1, borderColor: 'divider' }}
+      >
+        {ProjectsArray.map((data, index) => (
+          <Tab key={index} label={data.Name} {...a11yProps(index)}   wrapped/>
+        ))}
+      </Tabs>
+      {ProjectsArray.map((data, index) => (
+        <TabPanel key={index} value={value} index={index}>
+          {data.Description}
+        </TabPanel>
+      ))}
+    </Box>
+  );
+}
+export default VerticalTabs

@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Grid'; // Grid version 1
+import { Grid, Box, Stack, Typography} from '@mui/material'; // Grid version 1
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import React, { useState } from 'react'
 
@@ -7,21 +7,16 @@ const Navbar = ({nightMode, setNightMode}) => {
 
 
   return (
-    <Grid container spacing={100}>
-    <Grid item xs={12} sm={6}>
-        <div>
-        <div>
+    <Stack>
       <ModeNightIcon onClick={() => setNightMode(!nightMode)}/>
-    </div>
-    <h1>
+    <Box sx={{ typography: 'h6.fontSize'}}>
     Liat Arkadia Guvenc
-    </h1>
-    <p>
+    </Box>
+    <Typography variant="caption" sx={{ fontWeight: 'light', fontStyle: 'italic'}}>
         fullstack web developer from NY
-    </p>
-    </div>
-    </Grid>
-    </Grid>
+    </Typography>
+    </Stack>
+
   )
 }
 
