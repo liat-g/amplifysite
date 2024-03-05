@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Projects from './Components/Projects';
 import Contact from './Components/Contact';
 import Designs from './Components/Designs';
 import VerticalTabs from './Components/TabbedProjects';
@@ -16,7 +15,6 @@ import {Box, Stack} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import json2mq from 'json2mq';
-
 // import Container from '@mui/material/Container';
 // import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 // import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -58,6 +56,7 @@ import json2mq from 'json2mq';
 // });
 
 function App() {
+  // const modelRef = React.useRef();
   const [nightMode, setNightMode] = useState(false)
   
     const matches = useMediaQuery(
@@ -73,11 +72,9 @@ function App() {
       <Router>
         <Stack direction="column" justifyContent="center">
         <Navbar nightMode={nightMode} setNightMode={setNightMode}/>
-        <Box xs={{typography: 'h6.fontSize', fontWeight: '500',}}> 
-          Projects
-        { !matches ? <Projects /> : <VerticalTabs /> 
-}
-        </Box>
+        {/* <Box xs={{typography: 'h6.fontSize', fontWeight: '500',}}> 
+          Web Development 
+        </Box> */}
         {/* <Designs /> */}
         </Stack>
       </Router>

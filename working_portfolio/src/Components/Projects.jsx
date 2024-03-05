@@ -26,8 +26,6 @@ import json2mq from 'json2mq';
 
 
 
-
-
 const AccordionHeading = styled(Typography)(({theme}) => ({
 
   backgroundColor: palette.secondary
@@ -119,7 +117,7 @@ const Projects = () => {
         <Box>
         {data.Name}
         </Box>
-        <Typography variant="caption" p={3} sx={{fontStyle: 'italic'}}>
+        <Typography variant="caption" p={3} sx={{fontStyle: 'italic', fontFamily: "Futura"}}>
         {data.Type}
         </Typography>
       </AccordionSummary>
@@ -129,7 +127,8 @@ const Projects = () => {
             {data.Description}
         </Typography>
         {/* </Box> */}
-        <ImageList variant="masonry" cols={1}>
+        <ImageList variant="woven" cols={matches ? 2 : 1} sx={{height:{xs:"75%", sm:"75%", md:"50%", lg:"50%"}, width:{xs:"75%",sm:"75%", md:"50%", lg:"50%"}, justifyContent: "center",
+    alignItems: "center", display: "flex"}}>
             {data.img.map((imgUrl, imgIndex) => (
               <ImageListItem key={imgIndex}>
                 <img
