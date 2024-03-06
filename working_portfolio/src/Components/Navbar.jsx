@@ -94,7 +94,7 @@ function Navbar() {
         <Tabs value={value} onChange={handleChange} sx={{fontFamily: "Futura"}} textColor="secondary"
   indicatorColor="secondary" variant="fullWidth" >
           <Tab sx={{fontFamily: "Futura"}} label="Web and Mobile App Development" {...a11yProps(0)} />
-          <Tab sx={{fontFamily: "Futura"}} label="Designs" {...a11yProps(1)} />
+          <Tab sx={{fontFamily: "Futura"}} label="UX Designs" {...a11yProps(1)} />
           <Tab sx={{fontFamily: "Futura"}} label="3D Modelling" {...a11yProps(2)} />
         </Tabs>
       </Box>
@@ -102,8 +102,8 @@ function Navbar() {
         <Projects />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        {/* <Designs /> */}
-        Coming soon!
+        <Designs />
+        {/* Coming soon! */}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Coming soon!
