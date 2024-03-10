@@ -87,29 +87,28 @@ const Designs = () => {
             {data.Description}
         </Typography>
         {/* </Box> */}
-        <ImageList variant="woven" cols={matches ? 2 : 1} sx={{height:{xs:"100%", sm:"100%", md:"50%", lg:"50%"}, width:{xs:"75%",sm:"75%", md:"50%", lg:"50%"}, justifyContent: "center",
+        <ImageList variant="masonry" cols={matches ? 2 : 1} sx={{height:{xs:"100%", sm:"100%", md:"50%", lg:"50%"}, width:{xs:"75%",sm:"75%", md:"50%", lg:"50%"}, justifyContent: "center",
     alignItems: "center", display: "flex"}}>
             {data.img.map((imgUrl, imgIndex) => (
               <ImageListItem key={imgIndex}>
                 <img
-                    srcSet={`${imgUrl}?w=248&fit=contain&auto=format&dpr=2`}
-                    src={`${imgUrl}?w=248&fit=contain&auto=format`}
+                    srcSet={`${imgUrl}?w=500&fit=contain&auto=format&dpr=2`}
+                    src={`${imgUrl}?w=500&fit=contain&auto=format`}
                     // src={imgUrl}
                     alt={`Project ${index + 1} image ${imgIndex + 1}`}
                     
                                         />
                                     </ImageListItem>
                                 ))}
-          </ImageList>
-      <Box>
-          <a href={data.Link}>
-              See the Repo Here!
-          </a>
-      </Box>
+              <ImageListItem>
+              <Box sx={{width: 500, height:500, alignItems: "center"}}>
                <Box sx={{ gridArea: 'sidebar', fontStyle: 'italic', textAlign: 'center'}}>
+          </Box>
         {/* <img src={data.img} alt="loading" height="100%" /> */}
       <iframe width="100%" height="100%"src={data.embed} allowfullscreen></iframe>
     </Box>
+              </ImageListItem>
+          </ImageList>
    <Box>
           <a href={data.Link}>
                See the Figma Here!
